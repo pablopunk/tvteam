@@ -1,33 +1,69 @@
-import { resolver } from '../lib/teams'
 import useSWR from 'swr'
 import fetch from 'unfetch'
+import { DoubleBounce } from 'better-react-spinkit'
 import Match from '../components/Match'
+import { resolver } from '../lib/teams'
+import Layout from '../components/Layout'
 
 const fetcher = url => fetch(url).then(r => r.json())
 
-const Index = ({ name, defaultLeague }) => {
-  const { data, error } = useSWR(`/api/${name}`, fetcher)
+interface IProps {
+  team: ITeamConfig
+}
+
+const Index = (props: IProps) => {
+  const { data, error } = useSWR(`/api/${props.team.name}`, fetcher)
 
   if (error) {
     return <strong>There was an error fetching data</strong>
   }
 
-  if (!data) {
-    return <strong>Loading...</strong>
+  if (data) {
+    var next: Array<IMatch> = (data as Array<IMatch>).filter(
+      match => match.played === false
+    )
+
+    var nextOrLive = data[0]
+
+    for (const match of data) {
+      if (match.played || match.live) {
+        nextOrLive = match
+      }
+    }
   }
 
-  return data.map(match => (
-    <div key={match.game}>
-      <Match match={match} defaultLeague={defaultLeague} />
-    </div>
-  ))
+  return (
+    <Layout team={props.team}>
+      {data ? (
+        <>
+          <Match match={nextOrLive} defaultLeague={props.team.defaultLeague} />
+          {next.map(match => (
+            <div key={match.game}>
+              <Match match={match} defaultLeague={props.team.defaultLeague} />
+            </div>
+          ))}
+        </>
+      ) : (
+        <div className="loading">
+          <DoubleBounce size={50} color={props.team.colors.main} />
+        </div>
+      )}
+      <style jsx>{`
+        .loading {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+        }
+      `}</style>
+    </Layout>
+  )
 }
 
 Index.getInitialProps = async function({ req }) {
   if (req) {
     const team = resolver(req.headers.host)
 
-    return { ...team }
+    return { team }
   }
 
   return {}

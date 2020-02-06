@@ -1,11 +1,11 @@
 const Live = () => <span style={{ color: 'red', fontSize: '1.5em' }}>●</span>
 
-export default ({ match, defaultLeague }) => (
+const Match = ({ match, defaultLeague }) => (
   <div>
     <article>
       <small>
         {match.competition !== defaultLeague && (
-          <img src='https://img.icons8.com/flat_round/64/000000/uefa-euro-trophy.png' />
+          <img src="https://img.icons8.com/flat_round/64/000000/uefa-euro-trophy.png" />
         )}
         <span>{match.competition}</span>
       </small>
@@ -15,7 +15,7 @@ export default ({ match, defaultLeague }) => (
       </h2>
       <ul>
         {match.tvs.map((t, i) => (
-          <div key={i} className='tv'>
+          <div key={i} className="tv">
             {t}
           </div>
         ))}
@@ -58,3 +58,5 @@ export default ({ match, defaultLeague }) => (
     `}</style>
   </div>
 )
+
+export default Match

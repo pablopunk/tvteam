@@ -13,7 +13,10 @@ export default async (req, res) => {
     return res.end()
   }
 
-  const games = await getMatches(teamObject.country, teamObject.name)
+  const games: Array<IMatch> = await getMatches(
+    teamObject.country,
+    teamObject.name
+  )
 
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
