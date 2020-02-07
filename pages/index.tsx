@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 import fetch from 'unfetch'
+import moment from 'moment-timezone'
 import { DoubleBounce } from 'better-react-spinkit'
 import Match from '../components/Match'
 import { resolver } from '../lib/teams'
@@ -12,7 +13,10 @@ interface IProps {
 }
 
 const Index = (props: IProps) => {
-  const { data, error } = useSWR(`/api/${props.team.name}`, fetcher)
+  const { data, error } = useSWR(
+    `/api/${props.team.name}?timezone=${moment.tz.guess()}`,
+    fetcher
+  )
 
   if (error) {
     return <strong>There was an error fetching data</strong>

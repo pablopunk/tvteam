@@ -3,7 +3,7 @@ import getMatches from 'livesoccertv-parser'
 
 export default async (req, res) => {
   const {
-    query: { team }
+    query: { team, timezone }
   } = req
 
   const teamObject = getByName(team)
@@ -15,7 +15,8 @@ export default async (req, res) => {
 
   const games: Array<IMatch> = await getMatches(
     teamObject.country,
-    teamObject.name
+    teamObject.name,
+    { timezone }
   )
 
   res.statusCode = 200
