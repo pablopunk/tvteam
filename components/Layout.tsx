@@ -29,19 +29,20 @@ const Layout = (props: IProps) => (
         sizes="16x16"
         href={`/favicon/${props.team.name}/favicon-16x16.png`}
       />
-      <link rel="manifest" href="/static/manifest.json" />
       <link
         rel="mask-icon"
         href={`/favicon/${props.team.name}/safari-pinned-tab.svg`}
         color={props.team.colors.favicon}
       />
-      <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
+      <link
+        rel="shortcut icon"
+        href={`/favicon/${props.team.name}/favicon.ico`}
+      />
       <meta
         name="apple-mobile-web-app-title"
         content={props.team.names.short}
       />
       <meta name="application-name" content={props.team.names.short} />
-      <meta name="msapplication-config" content="/static/browserconfig.xml" />
       <meta name="theme-color" content="#ffffff" />
       <link
         href="https://fonts.googleapis.com/css?family=Raleway"
