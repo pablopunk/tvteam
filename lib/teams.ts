@@ -33,7 +33,7 @@ export const teams: { [name: string]: ITeamConfig } = {
     country: 'spain',
     name: 'barcelona',
     names: {
-      short: 'tvbarça',
+      short: 'tvcule',
       long: 'TV Barça'
     },
     defaultLeague: 'La Liga',
