@@ -1,7 +1,8 @@
-export const teams: { [name: string]: ITeamConfig } = {
-  realmadrid: {
+export const teams: Array<ITeamConfig> = [
+  {
     country: 'spain',
     name: 'real-madrid',
+    domainRegex: 'realmadrid',
     names: {
       short: 'tvrealmadrid',
       long: 'TV Real Madrid'
@@ -14,9 +15,10 @@ export const teams: { [name: string]: ITeamConfig } = {
       favicon: '#4169e1'
     }
   },
-  arsenal: {
+  {
     country: 'england',
     name: 'arsenal',
+    domainRegex: 'arsenal',
     names: {
       short: 'tvarsenal',
       long: 'TV Arsenal'
@@ -29,8 +31,9 @@ export const teams: { [name: string]: ITeamConfig } = {
       favicon: '#cc3314'
     }
   },
-  barça: {
+  {
     country: 'spain',
+    domainRegex: 'cule',
     name: 'barcelona',
     names: {
       short: 'tvcule',
@@ -44,25 +47,19 @@ export const teams: { [name: string]: ITeamConfig } = {
       favicon: '#cc3314'
     }
   }
-}
+]
 
 export function getByName(teamName: string) {
-  for (const team in teams) {
-    if (teams[team].name === teamName) {
-      return teams[team]
-    }
-  }
-
-  return null
+  return teams.find(t => t.name === teamName)
 }
 
 export function resolver(host: string): object {
-  for (const team in teams) {
-    if (new RegExp(team).test(host)) {
-      return teams[team]
+  for (const team of teams) {
+    if (new RegExp(team.domainRegex).test(host)) {
+      return team
     }
   }
 
   // default (for example for localhost)
-  return teams.realmadrid
+  return teams[0]
 }

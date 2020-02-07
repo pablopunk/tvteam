@@ -1,6 +1,7 @@
 interface ITeamConfig {
   country: string
   name: string
+  domainRegex: string
   defaultLeague: string
   colors: {
     main: string
