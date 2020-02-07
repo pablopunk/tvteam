@@ -53,50 +53,50 @@ const Layout = (props: IProps) => (
     <TopBar team={props.team} />
     <main>{props.children}</main>
     <footer>
-      <a href="https://pablo.pink">Pablo Varela ©</a>
-      <style global jsx>{`
-        body {
-          margin: 0;
-          padding: 0;
-          color: ${props.team.colors.main};
-          font-family: Raleway, sanserif;
-        }
-        *::selection {
-          background-color: ${props.team.colors.selection};
-        }
-        ul {
-          padding: 0;
-        }
-        main {
-          z-index: 2;
-          position: relative;
-          background-color: white;
-          margin-top: 80px;
-          height: 100%;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-        }
-        footer {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 1em;
-        }
-        footer a {
-          color: ${props.team.colors.mainDim};
-          text-decoration: none;
-          font-size: 0.7em;
-        }
-        footer a:hover {
-          text-decoration: underline;
-          color: ${props.team.colors.selection};
-        }
-      `}</style>
+      <a href="https://pablo.pink">© Pablo Varela {new Date().getFullYear()}</a>
     </footer>
+    <style global jsx>{`
+      body {
+        margin: 0;
+        padding: 0;
+        color: ${props.team.colors.main};
+        font-family: Raleway, sanserif;
+      }
+      *::selection {
+        background-color: ${props.team.colors.selection};
+      }
+      ul {
+        padding: 0;
+      }
+      main {
+        z-index: 2;
+        position: relative;
+        background-color: white;
+        margin-top: 80px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+      }
+      footer a {
+        color: ${props.team.colors.mainDim};
+        text-decoration: none;
+        font-size: 0.7em;
+      }
+      footer a:hover {
+        text-decoration: underline;
+        color: ${props.team.colors.selection};
+      }
+    `}</style>
   </>
 )
 
