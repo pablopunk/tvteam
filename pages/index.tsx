@@ -13,8 +13,9 @@ interface IProps {
 }
 
 const Index = (props: IProps) => {
+  const timezone = moment.tz.guess()
   const { data, error } = useSWR(
-    `/api/${props.team.name}?timezone=${moment.tz.guess()}`,
+    `/api/${props.team.country}/${props.team.name}/?timezone=${timezone}`,
     fetcher
   )
 

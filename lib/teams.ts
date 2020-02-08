@@ -49,10 +49,6 @@ export const teams: Array<ITeamConfig> = [
   }
 ]
 
-export function getByName(teamName: string) {
-  return teams.find(t => t.name === teamName)
-}
-
 export function resolver(host: string): object {
   for (const team of teams) {
     if (new RegExp(team.domainRegex).test(host)) {
