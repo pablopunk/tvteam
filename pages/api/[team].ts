@@ -6,18 +6,25 @@ export default async (req, res) => {
     query: { team, timezone }
   } = req
 
-  const teamObject = getByName(team)
+  let country, teamName
 
-  if (teamObject == null) {
-    res.statusCode = 404
-    return res.end()
+  if (team.includes(':')) {
+    // format 'country:team'
+    ;[country, teamName] = team.split(':')
+  } else {
+    // format 'team'
+    const teamObject = getByName(team)
+
+    if (teamObject == null) {
+      res.statusCode = 404
+      return res.end()
+    }
+
+    country = teamObject.country
+    teamName = teamObject.name
   }
 
-  const games: Array<IMatch> = await getMatches(
-    teamObject.country,
-    teamObject.name,
-    { timezone }
-  )
+  const games: Array<IMatch> = await getMatches(country, teamName, { timezone })
 
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
