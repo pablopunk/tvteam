@@ -2,7 +2,7 @@ export const teams: Array<ITeamConfig> = [
   {
     country: 'spain',
     name: 'real-madrid',
-    domainRegex: 'realmadrid',
+    domainRegex: 'tvrealmadrid',
     names: {
       short: 'tvrealmadrid',
       long: 'TV Real Madrid'
@@ -18,7 +18,7 @@ export const teams: Array<ITeamConfig> = [
   {
     country: 'england',
     name: 'arsenal',
-    domainRegex: 'arsenal',
+    domainRegex: 'tvarsenal',
     names: {
       short: 'tvarsenal',
       long: 'TV Arsenal'
@@ -33,7 +33,7 @@ export const teams: Array<ITeamConfig> = [
   },
   {
     country: 'spain',
-    domainRegex: 'cule',
+    domainRegex: 'tvcule',
     name: 'barcelona',
     names: {
       short: 'tvcule',

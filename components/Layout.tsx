@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import TopBar from './TopBar'
+import { teams } from '../lib/teams'
 
 interface IProps {
   team: ITeamConfig
@@ -51,7 +52,21 @@ const Layout = (props: IProps) => (
       <title>{props.team.names.long}</title>
     </Head>
     <TopBar team={props.team} />
-    <main>{props.children}</main>
+    <main>
+      {props.children}
+      <nav>
+        <h3>Other teams</h3>
+        {teams
+          .filter(t => t.name !== props.team.name)
+          .map(otherTeam => (
+            <p>
+              <a href={`https://${otherTeam.domainRegex}.com`}>
+                {otherTeam.names.long}
+              </a>
+            </p>
+          ))}
+      </nav>
+    </main>
     <footer>
       <a href="https://pablo.pink">© Pablo Varela {new Date().getFullYear()}</a>
     </footer>
@@ -80,6 +95,10 @@ const Layout = (props: IProps) => (
         justify-content: center;
         align-items: center;
         text-align: center;
+      }
+      nav {
+        border-top: 1px solid ${props.team.colors.main};
+        margin-top: 2rem;
       }
       footer {
         display: flex;
