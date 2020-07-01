@@ -9,7 +9,7 @@ export const teams: Array<ITeamConfig> = [
     },
     defaultLeague: 'La Liga',
     colors: {
-      main: 'royalblue',
+      main: 'blueviolet',
       mainDim: 'cornflowerblue',
       selection: 'aquamarine',
       favicon: '#4169e1'
