@@ -45,10 +45,6 @@ const Layout = (props: IProps) => (
       />
       <meta name="application-name" content={props.team.names.short} />
       <meta name="theme-color" content="#ffffff" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Raleway"
-        rel="stylesheet"
-      />
       <title>{props.team.names.long}</title>
     </Head>
     <TopBar team={props.team} />
@@ -59,11 +55,15 @@ const Layout = (props: IProps) => (
         {teams
           .filter(t => t.name !== props.team.name)
           .map(otherTeam => (
-            <p>
-              <a href={`https://${otherTeam.domainRegex}.com`}>
-                {otherTeam.names.long}
-              </a>
-            </p>
+            <a
+              key={otherTeam.name}
+              href={`https://${otherTeam.domainRegex}.com`}
+              style={{
+                backgroundColor: otherTeam.colors.main
+              }}
+            >
+              {otherTeam.names.long}
+            </a>
           ))}
       </nav>
     </main>
@@ -71,11 +71,14 @@ const Layout = (props: IProps) => (
       <a href="https://pablo.pink">© Pablo Varela {new Date().getFullYear()}</a>
     </footer>
     <style global jsx>{`
+      * {
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
         padding: 0;
         color: ${props.team.colors.main};
-        font-family: Raleway, sanserif;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       }
       *::selection {
         background-color: ${props.team.colors.selection};
@@ -89,7 +92,6 @@ const Layout = (props: IProps) => (
         background-color: white;
         margin-top: 80px;
         height: 100%;
-        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -99,6 +101,21 @@ const Layout = (props: IProps) => (
       nav {
         border-top: 1px solid ${props.team.colors.main};
         margin-top: 2rem;
+        width: 200px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      nav a {
+        text-decoration: none;
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        width: 100%;
+        margin: 0.2rem 0;
+      }
+      nav a:hover {
+        opacity: 0.8;
       }
       footer {
         display: flex;
@@ -108,7 +125,6 @@ const Layout = (props: IProps) => (
       }
       footer a {
         color: ${props.team.colors.mainDim};
-        text-decoration: none;
         font-size: 0.7em;
       }
       footer a:hover {

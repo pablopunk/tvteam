@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Generates websites of team games and schedules",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 1234",
     "start": "next start",
     "build": "next build"
   },

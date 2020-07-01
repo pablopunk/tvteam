@@ -43,9 +43,11 @@ const Index = (props: IProps) => {
         <>
           <Match match={nextOrLive} defaultLeague={props.team.defaultLeague} />
           {next.map(match => (
-            <div key={match.game}>
-              <Match match={match} defaultLeague={props.team.defaultLeague} />
-            </div>
+            <Match
+              key={match.game}
+              match={match}
+              defaultLeague={props.team.defaultLeague}
+            />
           ))}
         </>
       ) : (

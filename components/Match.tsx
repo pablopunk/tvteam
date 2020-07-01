@@ -1,7 +1,7 @@
 const Live = () => <span style={{ color: 'red', fontSize: '1.5em' }}>●</span>
 
 const Match = ({ match, defaultLeague }) => (
-  <div>
+  <>
     <article>
       <small>
         {match.competition !== defaultLeague && (
@@ -24,9 +24,10 @@ const Match = ({ match, defaultLeague }) => (
     <style jsx>{`
       article {
         padding: 1em;
-        margin: 1em;
+        margin: 1em 0;
         border: 1px solid whitesmoke;
         border-radius: 5px;
+        width: 100%;
         max-width: 500px;
       }
       article h1 {
@@ -56,7 +57,7 @@ const Match = ({ match, defaultLeague }) => (
         vertical-align: middle;
       }
     `}</style>
-  </div>
+  </>
 )
 
 export default Match
