@@ -68,7 +68,7 @@ const Layout = (props: IProps) => (
       </nav>
     </main>
     <footer>
-      <a href="https://pablo.pink">© Pablo Varela {new Date().getFullYear()}</a>
+      <a href="https://pablo.im">© Pablo Varela {new Date().getFullYear()}</a>
     </footer>
     <style global jsx>{`
       * {
