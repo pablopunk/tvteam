@@ -2,51 +2,51 @@ export const teams: Array<ITeamConfig> = [
   {
     country: 'spain',
     name: 'real-madrid',
-    domainRegex: 'tvrealmadrid',
+    domainRegex: 'madrid',
     names: {
       short: 'tvrealmadrid',
-      long: 'TV Real Madrid'
+      long: 'TV Real Madrid',
     },
     defaultLeague: 'La Liga',
     colors: {
       main: 'blueviolet',
       mainDim: 'cornflowerblue',
       selection: 'aquamarine',
-      favicon: '#4169e1'
-    }
+      favicon: '#4169e1',
+    },
   },
   {
     country: 'england',
     name: 'arsenal',
-    domainRegex: 'tvarsenal',
+    domainRegex: 'arsenal',
     names: {
       short: 'tvarsenal',
-      long: 'TV Arsenal'
+      long: 'TV Arsenal',
     },
     defaultLeague: 'Premier League',
     colors: {
       main: 'crimson',
       mainDim: 'tomato',
       selection: 'gold',
-      favicon: '#cc3314'
-    }
+      favicon: '#cc3314',
+    },
   },
   {
     country: 'spain',
-    domainRegex: 'tvcule',
+    domainRegex: 'barcelona',
     name: 'barcelona',
     names: {
       short: 'tvcule',
-      long: 'TV Barça'
+      long: 'TV Barça',
     },
     defaultLeague: 'La Liga',
     colors: {
       main: 'darkblue',
       mainDim: 'darkred',
       selection: 'gold',
-      favicon: '#cc3314'
-    }
-  }
+      favicon: '#cc3314',
+    },
+  },
 ]
 
 export function resolver(host: string): object {
