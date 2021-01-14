@@ -53,13 +53,13 @@ const Layout = (props: IProps) => (
       <nav>
         <h3>Other teams</h3>
         {teams
-          .filter(t => t.name !== props.team.name)
-          .map(otherTeam => (
+          .filter((t) => t.name !== props.team.name)
+          .map((otherTeam) => (
             <a
               key={otherTeam.name}
-              href={`https://${otherTeam.domainRegex}.com`}
+              href={`https://${otherTeam.domainRegex}.pablopunk.com`}
               style={{
-                backgroundColor: otherTeam.colors.main
+                backgroundColor: otherTeam.colors.main,
               }}
             >
               {otherTeam.names.long}
