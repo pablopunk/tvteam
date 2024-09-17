@@ -31,10 +31,12 @@ const Index = (props: IProps) => {
   }
 
   let nextOrLive: IMatch | null = null
-  let next: Array<IMatch> = []
+  let upcoming: Array<IMatch> = []
 
   if (data) {
-    next = (data as Array<IMatch>).filter((match) => match.played === false)
+    upcoming = (data as Array<IMatch>)
+      .filter((match) => match.played === false)
+      .filter((match) => match.live === false)
 
     nextOrLive = data[0]
 
@@ -50,7 +52,7 @@ const Index = (props: IProps) => {
       {data ? (
         <>
           <Match match={nextOrLive} defaultLeague={props.team.defaultLeague} />
-          {next.map((match) => (
+          {upcoming.map((match) => (
             <Match
               key={match.game}
               match={match}
