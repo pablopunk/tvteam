@@ -5,7 +5,7 @@ export default async (req, res) => {
     query: { country, team, timezone }
   } = req
 
-  const games: Array<IMatch> = await getMatches(country, team, { timezone })
+  const games = await getMatches(country, team, { timezone })
 
   if (games.length === 0) {
     res.statusCode = 404
