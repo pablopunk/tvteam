@@ -1,12 +1,15 @@
-import useSWR from 'swr'
-import fetch from 'unfetch'
-import moment from 'moment-timezone'
-import { DoubleBounce } from 'better-react-spinkit'
-import Match from '../components/Match'
-import { resolver } from '../lib/teams'
-import Layout from '../components/Layout'
+import useSWR from "swr"
+import fetch from "unfetch"
+import moment from "moment-timezone"
+import { DoubleBounce } from "better-react-spinkit"
+import Match from "../components/Match"
+import { resolver } from "../lib/teams"
+import Layout from "../components/Layout"
+import type matches from "livesoccertv-parser"
 
-const fetcher = url => fetch(url).then(r => r.json())
+type IMatch = Awaited<ReturnType<typeof matches>>[number]
+
+const fetcher = (url) => fetch(url).then((r) => r.json())
 
 interface IProps {
   team: ITeamConfig
@@ -16,10 +19,14 @@ const Index = (props: IProps) => {
   const timezone = moment.tz.guess()
   const { data, error } = useSWR(
     `/api/${props.team.country}/${props.team.name}/?timezone=${timezone}`,
-    fetcher
+    fetcher,
   )
 
   if (error) {
+    console.error(error)
+  }
+
+  if (error && !data) {
     return <strong>There was an error fetching data</strong>
   }
 
@@ -27,9 +34,7 @@ const Index = (props: IProps) => {
   let next: Array<IMatch> = []
 
   if (data) {
-    next= (data as Array<IMatch>).filter(
-      match => match.played === false
-    )
+    next = (data as Array<IMatch>).filter((match) => match.played === false)
 
     nextOrLive = data[0]
 
@@ -45,7 +50,7 @@ const Index = (props: IProps) => {
       {data ? (
         <>
           <Match match={nextOrLive} defaultLeague={props.team.defaultLeague} />
-          {next.map(match => (
+          {next.map((match) => (
             <Match
               key={match.game}
               match={match}

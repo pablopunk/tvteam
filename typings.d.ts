@@ -14,13 +14,3 @@ interface ITeamConfig {
     long: string
   }
 }
-
-interface IMatch {
-  competition: string
-  date: string
-  game: string
-  live: boolean
-  played: boolean
-  time: string
-  tvs: Array<string>
-}
