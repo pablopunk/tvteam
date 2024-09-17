@@ -1,4 +1,4 @@
-# [DEPRECATED - NEEDS REFACTORING] TV TEAM
+# TV TEAM
 
 Generate a website with your favorite team's next games, including day, time, and what TV channel you can see it on.
 

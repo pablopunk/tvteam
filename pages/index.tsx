@@ -23,12 +23,15 @@ const Index = (props: IProps) => {
     return <strong>There was an error fetching data</strong>
   }
 
+  let nextOrLive: IMatch | null = null
+  let next: Array<IMatch> = []
+
   if (data) {
-    var next: Array<IMatch> = (data as Array<IMatch>).filter(
+    next= (data as Array<IMatch>).filter(
       match => match.played === false
     )
 
-    var nextOrLive = data[0]
+    nextOrLive = data[0]
 
     for (const match of data) {
       if (match.played || match.live) {
@@ -66,7 +69,7 @@ const Index = (props: IProps) => {
   )
 }
 
-Index.getInitialProps = async function({ req }) {
+Index.getInitialProps = async ({ req }) => {
   if (req) {
     const team = resolver(req.headers.host)
 
