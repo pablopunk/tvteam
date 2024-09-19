@@ -1,15 +1,18 @@
-const Live = () => <span style={{ color: 'red', fontSize: '1.5em' }}>●</span>
+const Live = () => <span style={{ color: "red", fontSize: "1.5em" }}>●</span>
 
 const Match = ({ match, defaultLeague }) => (
   <>
     <article>
       <small>
         {match.competition !== defaultLeague && (
-          <img src="https://img.icons8.com/flat_round/64/000000/uefa-euro-trophy.png" />
+          <img
+            src="https://img.icons8.com/flat_round/64/000000/uefa-euro-trophy.png"
+            alt="Trophy"
+          />
         )}
         <span>{match.competition}</span>
       </small>
-      <h1 className={match.played ? 'played' : ''}>{match.game}</h1>
+      <h1 className={match.played ? "played" : ""}>{match.game}</h1>
       <h2>
         {match.date} - {match.time} {match.live && <Live />}
       </h2>
@@ -32,6 +35,7 @@ const Match = ({ match, defaultLeague }) => (
       }
       article h1 {
         font-size: 1.8em;
+        margin: 0.5em 0;
       }
       h1.played {
         color: #3f3f3f;
@@ -49,6 +53,7 @@ const Match = ({ match, defaultLeague }) => (
         display: flex;
         justify-content: center;
         align-items: center;
+        font-weight: bold;
       }
       article img {
         width: 1em;

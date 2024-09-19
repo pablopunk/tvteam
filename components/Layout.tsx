@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import TopBar from './TopBar'
-import { teams } from '../lib/teams'
+import Head from "next/head"
+import TopBar from "./TopBar"
+import { teams } from "../lib/teams"
 
 interface IProps {
   team: ITeamConfig
@@ -59,7 +59,8 @@ const Layout = (props: IProps) => (
               key={otherTeam.name}
               href={`https://${otherTeam.domainRegex}.pablopunk.com`}
               style={{
-                backgroundColor: otherTeam.colors.main,
+                color: otherTeam.colors.main,
+                border: `1px solid ${otherTeam.colors.main}`,
               }}
             >
               {otherTeam.names.long}
@@ -110,7 +111,6 @@ const Layout = (props: IProps) => (
       }
       nav a {
         text-decoration: none;
-        color: white;
         padding: 0.4rem 1rem;
         border-radius: 5px;
         width: 100%;
