@@ -1,6 +1,5 @@
 import useSWR from "swr"
 import fetch from "unfetch"
-import moment from "moment-timezone"
 import { DoubleBounce } from "better-react-spinkit"
 import Match from "../components/Match"
 import { resolver } from "../lib/teams"
@@ -16,9 +15,8 @@ interface IProps {
 }
 
 const Index = (props: IProps) => {
-  const timezone = moment.tz.guess()
   const { data, error } = useSWR(
-    `/api/${props.team.country}/${props.team.name}/?timezone=${timezone}`,
+    `https://tvteam-api.notlify.app/${props.team.country}/${props.team.name}`,
     fetcher,
   )
 
